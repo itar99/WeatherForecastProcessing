@@ -7,10 +7,10 @@
 # Currently this supports the following formats/sources
 # US National Weather Service - flat file and API call
 # NOAA National Digital Forecast Database (NDFD) - file only.  API calls could be added later
+# delimited flat file
 
 # TODO: Better error handling.  We should be able to have an error with reading a file or an API call and still process the rest of the requested data but it needs to be more robust
 
-use strict;
 use Data::Dumper;
 use JSON;
 use LWP::UserAgent;
@@ -23,45 +23,8 @@ my $settings = load_settings();
 my %forecast = ();
 foreach my $source (@{$settings->{"source"}})
 {
-    if($source->{"mapping"} eq 'NWS') {
-        my $data = {};
-        if($source->{"type"} eq 'file') {
-            my $source_file = $source->{"source_directory"} ? $source->{"source_directory"} . "/" . $source->{"file_name"} : $settings->{"source_directory"} . "/" . $source->{"file_name"}; # you could put all this inside the read_file call but this is easier to read I think
-            my $file_contents = read_file($source_file);
-
-            $data = $file_contents ? decode_json($file_contents) : {};
-        } elsif($source->{"type"} eq 'api') {
-
-            my $ua = LWP::UserAgent->new;
-            my $raw_data = $ua->get($source->{"url"});
-            $data = decode_json($raw_data->{'_content'});
-            if(!defined $data) {
-                logit("ERROR!  return from API call undefined! $!");
-            }
-        }
-
-        $forecast{$source->{'name'}} = process_NWS($data, $source);
-
-    } elsif ($source->{"mapping"} eq 'NDFD') {
-
-        my $data = {};
-        if($source->{"type"} eq 'file') {
-            my $source_file = $source->{"source_directory"} ? $source->{"source_directory"} . "/" . $source->{"file_name"} : $settings->{"source_directory"} . "/" . $source->{"file_name"}; # you could put all this inside the read_file call but this is easier to read I think
-            my $file_contents = read_file($source_file);
-
-            if($file_contents) {
-                my $xml_converter = XML::Hash->new();
-                $data = $xml_converter->fromXMLStringtoHash($file_contents);
-                $data = $data->{'dwml'}{'data'};
-            }
-        }
-
-        $forecast{$source->{'name'}} = process_NDFD($data, $source);
-    }  elsif ($source->{"mapping"} eq 'DEL') {
-        my $source_file = $source->{"source_directory"} ? $source->{"source_directory"} . "/" . $source->{"file_name"} : $settings->{"source_directory"} . "/" . $source->{"file_name"}; # you could put all this inside the read_file call but this is easier to read I think
-
-        $forecast{$source->{'name'}} = process_delimited($source_file, $source);
-    }
+    $forecast{$source->{'name'}} = process_source($source);
+    
 }
 
 # output the forecast structure we created.  We can return this to a calling function or send it back to an API call or whatever we want.  Just output for now
@@ -104,6 +67,46 @@ sub logit {
         print "$mon-$mday-$year $hour:$min:$sec - $msg\n";
     }
 
+}
+
+sub process_source {
+       my ($source) = @_;
+logit("porcess_source: " . Dumper($source));
+    return undef if(!defined $source);
+
+    my $forecast = {};
+    my $data = {};
+    my $file_contents = "";
+    if($source->{'type'} eq 'file') {
+        # load the file
+        my $source_file = $source->{"source_directory"} ? $source->{"source_directory"} . "/" . $source->{"file_name"} : $settings->{"source_directory"} . "/" . $source->{"file_name"};
+        if($source->{'mapping'} ne 'DEL') {
+            $file_contents = read_file($source_file);
+        }
+    } elsif($source->{'type'} eq 'api'){
+        my $ua = LWP::UserAgent->new;
+        my $raw_data = $ua->get($source->{"url"});
+        $file_contents = $raw_data->{'_content'};
+    }
+
+    if($source->{'format'} eq 'xml') {
+        my $xml_converter = XML::Hash->new();
+        $data = $xml_converter->fromXMLStringtoHash($file_contents);
+
+    } elsif ($source->{'format'} eq 'json') {
+        $data = $file_contents ? decode_json($file_contents) : {};
+    }
+
+    # call the processing function
+    if($source->{'mapping'} eq 'DEL') {
+        my $source_file = $source->{"source_directory"} ? $source->{"source_directory"} . "/" . $source->{"file_name"} : $settings->{"source_directory"} . "/" . $source->{"file_name"};
+        $forecast = process_delimited($source_file, $source);
+    } else {
+        my $func = 'process_' . $source->{'mapping'};
+        $forecast = $func->($data, $source);
+    }
+
+    return $forecast;
 }
 
 # process data in the US National Weather Service (NWS) format regardless of if we get the data from an API call or a file.
@@ -163,6 +166,7 @@ sub process_NDFD {
     return \%forecast;
 }
 
+# process a delimited flat file that may or may not have a header row (specified in the source record)
 sub process_delimited {
     my ($filename, $source) = @_;
 

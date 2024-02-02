@@ -1,317 +1,271 @@
-2-1-2024 20:58:18 - forecast: 
-$VAR1 = 'national weather service FILE';
+2-1-2024 22:7:23 - porcess_source: $VAR1 = {
+          'file_name' => 'national_weather_service_api.json',
+          'mapping' => 'NWS',
+          'longitude' => '-91.8274',
+          'type' => 'file',
+          'latitude' => '37.8897',
+          'format' => 'json',
+          'name' => 'national weather service FILE'
+        };
+
+2-1-2024 22:7:23 - porcess_source: $VAR1 = {
+          'col_mapping' => [
+                             'latitude',
+                             'longitude',
+                             'temperature',
+                             'wind speed',
+                             'precipitation'
+                           ],
+          'header' => 'y',
+          'name' => 'generic weather CSV file',
+          'seperator' => ',',
+          'file_name' => 'weather.csv',
+          'mapping' => 'DEL',
+          'format' => 'csv',
+          'type' => 'file'
+        };
+
+2-1-2024 22:7:23 - porcess_source: $VAR1 = {
+          'url' => 'http://api.weather.gov/gridpoints/LSX/119,66/forecast',
+          'notes' => 'Use https://api.weather.gov/points/{latitude},{longitude} to get the National Weather Service grid points for this latitude, longitude then call the value from the properties.forecast.  In this case call https://api.weather.gov/points/37.8897,-91.8274 to get the grid in the URL field',
+          'name' => 'US National Weather Service API',
+          'latitude' => '37.8897',
+          'mapping' => 'NWS',
+          'type' => 'api',
+          'location_name' => 'Rhea Farm USA',
+          'longitude' => '-91.8274'
+        };
+
+2-1-2024 22:7:23 - porcess_source: $VAR1 = {
+          'days' => 7,
+          'format' => 'xml',
+          'lattitude' => '38.99',
+          'name' => 'National Digital Forecast Database (NDFD)',
+          'file_name' => 'NDFD_api.xml',
+          'mapping' => 'NDFD',
+          'longitude' => '-77.01',
+          'type' => 'file'
+        };
+
+2-1-2024 22:7:23 - forecast: 
+$VAR1 = 'National Digital Forecast Database (NDFD)';
 $VAR2 = {
-          'time' => '2024-02-01T00:36:56+00:00',
+          'latitude' => undef,
+          'longitude' => undef,
           'daily_forecast' => {
                                 '6' => {
-                                         'wind_speed' => '15 mph',
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E',
-                                         'temperature' => '57F'
-                                       },
-                                '4' => {
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E',
-                                         'temperature' => '55F',
-                                         'wind_speed' => '10 mph'
-                                       },
-                                '10' => {
-                                          'precipitation_chance' => undef,
-                                          'wind_direction' => 'N',
-                                          'temperature' => '51F',
-                                          'wind_speed' => '8 to 14 mph'
-                                        },
-                                '12' => {
-                                          'precipitation_chance' => undef,
-                                          'wind_direction' => 'NE',
-                                          'temperature' => '51F',
-                                          'wind_speed' => '7 mph'
-                                        },
-                                '3' => {
-                                         'wind_speed' => '8 mph',
-                                         'temperature' => '41F',
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E'
+                                         'wind_speed' => undef,
+                                         'temperature' => undef,
+                                         'wind_direction' => undef
                                        },
                                 '0' => {
-                                         'precipitation_chance' => 10,
-                                         'wind_direction' => 'S',
-                                         'wind_speed' => '5 to 8 mph'
+                                         'wind_speed' => undef,
+                                         'wind_direction' => undef,
+                                         'temperature' => undef
                                        },
-                                '11' => {
-                                          'precipitation_chance' => undef,
-                                          'temperature' => '32F',
-                                          'wind_direction' => 'N',
-                                          'wind_speed' => '9 mph'
-                                        },
+                                '5' => {
+                                         'wind_speed' => undef,
+                                         'wind_direction' => undef,
+                                         'temperature' => undef
+                                       },
+                                '1' => {
+                                         'wind_direction' => undef,
+                                         'temperature' => undef,
+                                         'wind_speed' => undef
+                                       },
                                 '2' => {
-                                         'wind_speed' => '3 to 10 mph',
-                                         'wind_direction' => 'SW',
-                                         'precipitation_chance' => 65,
-                                         'temperature' => '59F'
+                                         'wind_speed' => undef,
+                                         'temperature' => undef,
+                                         'wind_direction' => undef
+                                       },
+                                '3' => {
+                                         'wind_direction' => undef,
+                                         'temperature' => undef,
+                                         'wind_speed' => undef
+                                       },
+                                '4' => {
+                                         'wind_speed' => undef,
+                                         'wind_direction' => undef,
+                                         'temperature' => undef
+                                       }
+                              },
+          'time' => undef
+        };
+$VAR3 = 'US National Weather Service API';
+$VAR4 = {
+          'latitude' => '37.8897',
+          'longitude' => '-91.8274',
+          'time' => undef
+        };
+$VAR5 = 'generic weather CSV file';
+$VAR6 = {
+          'daily_forecast' => {
+                                '6' => {
+                                         'precipitation' => 'East',
+                                         'temperature' => '44',
+                                         'wind speed' => '5',
+                                         'latitude' => '37.8897',
+                                         'longitude' => '-91.8274'
                                        },
                                 '9' => {
-                                         'wind_speed' => '15 mph',
-                                         'wind_direction' => 'N',
-                                         'precipitation_chance' => undef,
-                                         'temperature' => '37F'
+                                         'temperature' => '51',
+                                         'wind speed' => '5',
+                                         'latitude' => '37.8897',
+                                         'longitude' => '-91.8274',
+                                         'precipitation' => 'East'
                                        },
-                                '14' => {
-                                          'temperature' => '52F'
-                                        },
+                                '7' => {
+                                         'temperature' => '32',
+                                         'wind speed' => '5',
+                                         'longitude' => '-91.8274',
+                                         'latitude' => '37.8897',
+                                         'precipitation' => 'West'
+                                       },
+                                '2' => {
+                                         'precipitation' => 'East',
+                                         'longitude' => '-91.8274',
+                                         'latitude' => '37.8897',
+                                         'wind speed' => '5',
+                                         'temperature' => '32'
+                                       },
                                 '5' => {
-                                         'temperature' => '41F',
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E',
-                                         'wind_speed' => '10 to 14 mph'
+                                         'temperature' => '58',
+                                         'wind speed' => '5',
+                                         'longitude' => '-91.8274',
+                                         'latitude' => '37.8897',
+                                         'precipitation' => 'North'
                                        },
-                                '13' => {
-                                          'precipitation_chance' => undef,
-                                          'wind_direction' => 'SE',
-                                          'temperature' => '31F',
-                                          'wind_speed' => '6 to 9 mph'
+                                '11' => {
+                                          'temperature' => '49',
+                                          'wind speed' => '5',
+                                          'longitude' => '-91.8274',
+                                          'latitude' => '37.8897',
+                                          'precipitation' => 'East'
                                         },
+                                '3' => {
+                                         'longitude' => '-91.8274',
+                                         'latitude' => '37.8897',
+                                         'temperature' => '25',
+                                         'wind speed' => '5',
+                                         'precipitation' => 'East'
+                                       },
+                                '10' => {
+                                          'longitude' => '-91.8274',
+                                          'latitude' => '37.8897',
+                                          'wind speed' => '5',
+                                          'temperature' => '53',
+                                          'precipitation' => 'East'
+                                        },
+                                '4' => {
+                                         'precipitation' => 'Northeast',
+                                         'latitude' => '37.8897',
+                                         'longitude' => '-91.8274',
+                                         'wind speed' => '5',
+                                         'temperature' => '47'
+                                       },
+                                '8' => {
+                                         'longitude' => '-91.8274',
+                                         'latitude' => '37.8897',
+                                         'wind speed' => '5',
+                                         'temperature' => '37',
+                                         'precipitation' => 'South'
+                                       }
+                              },
+          'latitude' => '37.8897',
+          'longitude' => '-91.8274'
+        };
+$VAR7 = 'national weather service FILE';
+$VAR8 = {
+          'longitude' => '-91.8274',
+          'latitude' => '37.8897',
+          'daily_forecast' => {
                                 '1' => {
                                          'wind_speed' => '9 mph',
                                          'precipitation_chance' => 15,
                                          'temperature' => '35F',
                                          'wind_direction' => 'S'
                                        },
-                                '8' => {
-                                         'wind_speed' => '15 mph',
-                                         'precipitation_chance' => 30,
-                                         'temperature' => '55F',
-                                         'wind_direction' => 'NE'
-                                       },
-                                '7' => {
-                                         'wind_speed' => '15 mph',
-                                         'wind_direction' => 'NE',
-                                         'precipitation_chance' => 20,
-                                         'temperature' => '41F'
-                                       }
-                              },
-          'longitude' => '-91.8274',
-          'latitude' => '37.8897'
-        };
-$VAR3 = 'National Digital Forecast Database (NDFD)';
-$VAR4 = {
-          'longitude' => '-77.01',
-          'latitude' => '38.99',
-          'daily_forecast' => {
-                                '3' => {
-                                         'wind_speed' => '4',
-                                         'precipitation_chance' => 'slight chance',
-                                         'wind_direction' => '81',
-                                         'temperature' => '53'
-                                       },
-                                '6' => {
-                                         'wind_speed' => '2',
-                                         'precipitation_chance' => 'slight chance',
-                                         'wind_direction' => '62',
-                                         'temperature' => '49'
-                                       },
-                                '0' => {
-                                         'wind_direction' => '124',
-                                         'precipitation_chance' => 'slight chance',
-                                         'temperature' => '53',
-                                         'wind_speed' => '5'
-                                       },
-                                '4' => {
-                                         'wind_speed' => '1',
-                                         'wind_direction' => '92',
-                                         'precipitation_chance' => 'slight chance',
-                                         'temperature' => '45'
-                                       },
-                                '2' => {
-                                         'wind_speed' => '3',
-                                         'wind_direction' => '82',
-                                         'precipitation_chance' => 'slight chance',
-                                         'temperature' => '48'
-                                       },
-                                '5' => {
-                                         'wind_direction' => '69',
-                                         'precipitation_chance' => 'slight chance',
-                                         'temperature' => '45',
-                                         'wind_speed' => '2'
-                                       },
-                                '1' => {
-                                         'temperature' => '50',
-                                         'precipitation_chance' => 'slight chance',
-                                         'wind_direction' => '134',
-                                         'wind_speed' => '2'
-                                       }
-                              },
-          'time' => '2024-02-01T07:00:00-05:00'
-        };
-$VAR5 = 'US National Weather Service API';
-$VAR6 = {
-          'time' => '2024-02-02T00:52:07+00:00',
-          'daily_forecast' => {
-                                '10' => {
-                                          'temperature' => '50F',
-                                          'precipitation_chance' => undef,
-                                          'wind_direction' => 'E',
-                                          'wind_speed' => '7 mph'
-                                        },
-                                '12' => {
-                                          'wind_speed' => '13 mph',
-                                          'precipitation_chance' => undef,
-                                          'wind_direction' => 'SE',
-                                          'temperature' => '53F'
-                                        },
-                                '6' => {
-                                         'wind_direction' => 'NE',
-                                         'precipitation_chance' => undef,
-                                         'temperature' => '52F',
-                                         'wind_speed' => '14 mph'
-                                       },
-                                '4' => {
-                                         'wind_speed' => '12 mph',
-                                         'temperature' => '54F',
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E'
-                                       },
                                 '13' => {
                                           'precipitation_chance' => undef,
-                                          'wind_direction' => 'S',
-                                          'temperature' => '39F',
-                                          'wind_speed' => '13 to 18 mph'
-                                        },
-                                '8' => {
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'N',
-                                         'temperature' => '52F',
-                                         'wind_speed' => '7 to 12 mph'
-                                       },
-                                '1' => {
-                                         'wind_direction' => 'NE',
-                                         'precipitation_chance' => undef,
-                                         'temperature' => '40F',
-                                         'wind_speed' => '9 mph'
-                                       },
-                                '7' => {
-                                         'wind_speed' => '12 mph',
-                                         'wind_direction' => 'N',
-                                         'precipitation_chance' => undef,
-                                         'temperature' => '34F'
-                                       },
-                                '3' => {
-                                         'wind_speed' => '9 to 13 mph',
-                                         'temperature' => '37F',
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E'
-                                       },
-                                '11' => {
-                                          'wind_direction' => 'SE',
-                                          'precipitation_chance' => undef,
+                                          'wind_speed' => '6 to 9 mph',
                                           'temperature' => '31F',
-                                          'wind_speed' => '7 to 10 mph'
+                                          'wind_direction' => 'SE'
                                         },
-                                '0' => {
-                                         'wind_speed' => '3 to 8 mph',
-                                         'wind_direction' => 'W',
-                                         'precipitation_chance' => undef
-                                       },
                                 '2' => {
-                                         'precipitation_chance' => undef,
-                                         'wind_direction' => 'E',
-                                         'temperature' => '53F',
-                                         'wind_speed' => '7 to 10 mph'
+                                         'wind_speed' => '3 to 10 mph',
+                                         'precipitation_chance' => 65,
+                                         'temperature' => '59F',
+                                         'wind_direction' => 'SW'
                                        },
-                                '9' => {
-                                         'wind_direction' => 'NE',
-                                         'precipitation_chance' => undef,
-                                         'temperature' => '31F',
-                                         'wind_speed' => '7 mph'
-                                       },
-                                '5' => {
-                                         'wind_direction' => 'E',
-                                         'precipitation_chance' => undef,
-                                         'temperature' => '37F',
-                                         'wind_speed' => '13 mph'
-                                       },
-                                '14' => {
-                                          'temperature' => '56F'
-                                        }
-                              },
-          'longitude' => '-91.8274',
-          'latitude' => '37.8897'
-        };
-$VAR7 = 'generic weather CSV file';
-$VAR8 = {
-          'latitude' => '37.8897',
-          'longitude' => '-91.8274',
-          'daily_forecast' => {
-                                '7' => {
-                                         'precipitation' => 'West',
-                                         'wind speed' => '5',
-                                         'temperature' => '32',
-                                         'longitude' => '-91.8274',
-                                         'latitude' => '37.8897'
-                                       },
-                                '10' => {
-                                          'precipitation' => 'East',
-                                          'wind speed' => '5',
-                                          'temperature' => '53',
-                                          'longitude' => '-91.8274',
-                                          'latitude' => '37.8897'
-                                        },
                                 '8' => {
-                                         'temperature' => '37',
-                                         'longitude' => '-91.8274',
-                                         'latitude' => '37.8897',
-                                         'precipitation' => 'South',
-                                         'wind speed' => '5'
-                                       },
-                                '5' => {
-                                         'latitude' => '37.8897',
-                                         'longitude' => '-91.8274',
-                                         'temperature' => '58',
-                                         'wind speed' => '5',
-                                         'precipitation' => 'North'
-                                       },
-                                '9' => {
-                                         'precipitation' => 'East',
-                                         'wind speed' => '5',
-                                         'temperature' => '51',
-                                         'longitude' => '-91.8274',
-                                         'latitude' => '37.8897'
-                                       },
-                                '2' => {
-                                         'wind speed' => '5',
-                                         'precipitation' => 'East',
-                                         'longitude' => '-91.8274',
-                                         'latitude' => '37.8897',
-                                         'temperature' => '32'
+                                         'wind_direction' => 'NE',
+                                         'temperature' => '55F',
+                                         'wind_speed' => '15 mph',
+                                         'precipitation_chance' => 30
                                        },
                                 '4' => {
-                                         'latitude' => '37.8897',
-                                         'longitude' => '-91.8274',
-                                         'temperature' => '47',
-                                         'wind speed' => '5',
-                                         'precipitation' => 'Northeast'
+                                         'wind_direction' => 'E',
+                                         'temperature' => '55F',
+                                         'wind_speed' => '10 mph',
+                                         'precipitation_chance' => undef
                                        },
-                                '11' => {
-                                          'temperature' => '49',
-                                          'longitude' => '-91.8274',
-                                          'latitude' => '37.8897',
-                                          'precipitation' => 'East',
-                                          'wind speed' => '5'
+                                '14' => {
+                                          'temperature' => '52F'
                                         },
                                 '6' => {
-                                         'temperature' => '44',
-                                         'longitude' => '-91.8274',
-                                         'latitude' => '37.8897',
-                                         'precipitation' => 'East',
-                                         'wind speed' => '5'
+                                         'wind_speed' => '15 mph',
+                                         'precipitation_chance' => undef,
+                                         'temperature' => '57F',
+                                         'wind_direction' => 'E'
                                        },
+                                '0' => {
+                                         'wind_speed' => '5 to 8 mph',
+                                         'precipitation_chance' => 10,
+                                         'wind_direction' => 'S'
+                                       },
+                                '11' => {
+                                          'temperature' => '32F',
+                                          'wind_direction' => 'N',
+                                          'wind_speed' => '9 mph',
+                                          'precipitation_chance' => undef
+                                        },
+                                '12' => {
+                                          'wind_direction' => 'NE',
+                                          'temperature' => '51F',
+                                          'precipitation_chance' => undef,
+                                          'wind_speed' => '7 mph'
+                                        },
+                                '5' => {
+                                         'temperature' => '41F',
+                                         'wind_direction' => 'E',
+                                         'wind_speed' => '10 to 14 mph',
+                                         'precipitation_chance' => undef
+                                       },
+                                '10' => {
+                                          'wind_direction' => 'N',
+                                          'temperature' => '51F',
+                                          'wind_speed' => '8 to 14 mph',
+                                          'precipitation_chance' => undef
+                                        },
                                 '3' => {
-                                         'temperature' => '25',
-                                         'latitude' => '37.8897',
-                                         'longitude' => '-91.8274',
-                                         'precipitation' => 'East',
-                                         'wind speed' => '5'
+                                         'temperature' => '41F',
+                                         'wind_direction' => 'E',
+                                         'precipitation_chance' => undef,
+                                         'wind_speed' => '8 mph'
+                                       },
+                                '9' => {
+                                         'wind_direction' => 'N',
+                                         'temperature' => '37F',
+                                         'precipitation_chance' => undef,
+                                         'wind_speed' => '15 mph'
+                                       },
+                                '7' => {
+                                         'precipitation_chance' => 20,
+                                         'wind_speed' => '15 mph',
+                                         'temperature' => '41F',
+                                         'wind_direction' => 'NE'
                                        }
-                              }
+                              },
+          'time' => '2024-02-01T00:36:56+00:00'
         };
 
