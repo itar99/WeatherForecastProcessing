@@ -1,0 +1,45 @@
+{
+    "source_directory": ".",
+    "key_values" : ["lattitude", "longitude","time","temperature","wind speed", "precipitation"],
+    "source": [
+        {
+            "name": "national weather service FILE",
+            "type" : "file",
+            "format": "json",
+            "file_name": "national_weather_service_api.json",
+            "mapping": "NWS",
+            "latitude": "37.8897",
+            "longitude": "-91.8274"
+        },
+        {
+            "name": "generic weather CSV file",
+            "type": "file",
+            "format": "csv",
+            "seperator": ",",
+            "header": "y",
+            "file_name": "weather.csv",
+            "mapping": "DEL",
+            "col_mapping": ["latitude", "longitude","temperature","wind speed", "precipitation"]
+        },
+        {
+            "name": "US National Weather Service API",
+            "type": "api",
+            "url": "http://api.weather.gov/gridpoints/LSX/119,66/forecast",
+            "location_name": "Rhea Farm USA",
+            "notes": "Use https://api.weather.gov/points/{latitude},{longitude} to get the National Weather Service grid points for this latitude, longitude then call the value from the properties.forecast.  In this case call https://api.weather.gov/points/37.8897,-91.8274 to get the grid in the URL field",
+            "mapping": "NWS",
+            "latitude": "37.8897",
+            "longitude": "-91.8274"
+        },
+        {
+            "name": "National Digital Forecast Database (NDFD)",
+            "type": "file",
+            "format": "xml",
+            "file_name": "NDFD_api.xml",
+            "mapping": "NDFD",
+            "days": 7,
+            "lattitude": "38.99",
+            "longitude": "-77.01"
+        }
+    ]
+}
